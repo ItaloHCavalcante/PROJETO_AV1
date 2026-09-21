@@ -1,0 +1,93 @@
+FUNÇÃO 5 — Contagem de Elementos Presentes em Vetor Ordenado
+
+PSEUDOCÓDIGO DA BUSCA BINÁRIA
+
+FUNÇÃO buscaBinaria(B, n, valor)
+
+    inicio <- 0
+    fim <- n - 1
+
+    ENQUANTO inicio <= fim FAÇA
+
+        meio <- (inicio + fim) / 2
+
+        SE B[meio] = valor ENTÃO
+            RETORNE 1
+        FIM SE
+
+        SE B[meio] < valor ENTÃO
+            inicio <- meio + 1
+        SENÃO
+            fim <- meio - 1
+        FIM SE
+
+    FIM ENQUANTO
+
+    RETORNE 0
+
+FIM FUNÇÃO
+
+
+PSEUDOCÓDIGO DA FUNÇÃO PRINCIPAL
+
+FUNÇÃO contarElementosPresentes(A, B, n)
+
+    contador <- 0
+
+    PARA i <- 0 ATÉ n - 1 FAÇA
+
+        SE buscaBinaria(B, n, A[i]) = 1 ENTÃO
+            contador <- contador + 1
+        FIM SE
+
+    FIM PARA
+
+    RETORNE contador
+
+FIM FUNÇÃO
+
+
+COMPLEXIDADE
+
+A função buscaBinaria possui complexidade O(log n), pois a cada repetição a área de busca é dividida pela metade.
+
+A função contarElementosPresentes percorre os n elementos do vetor A e, para cada elemento, executa uma busca binária no vetor B.
+
+Assim:
+
+O(n) x O(log n)
+
+Complexidade final:
+
+O(n log n)
+
+
+EXPRESSÃO DE COMPLEXIDADE
+
+T(n) = n log n + n + 2
+
+O termo dominante é n log n.
+
+Portanto:
+
+T(n) = O(n log n)
+
+
+CÁLCULO PARA n = 10.000.000
+
+log2(10.000.000) ≈ 23,25
+
+Considerando aproximadamente 24 etapas por busca binária:
+
+10.000.000 x 24 = 240.000.000
+
+Considerando uma máquina que executa 10^8 instruções por segundo:
+
+Tempo = 240.000.000 / 100.000.000
+
+Tempo aproximado = 2,4 segundos.
+
+
+CONCLUSÃO
+
+A função percorre todos os elementos do vetor A e, para cada elemento, realiza uma busca binária no vetor B. Como o percurso de A possui complexidade O(n) e a busca binária possui complexidade O(log n), a complexidade final do algoritmo é O(n log n).
