@@ -1,0 +1,129 @@
+PSEUDOCÓDIGO DA FUNÇÃO AUXILIAR
+
+FUNÇÃO calcularFatorial(n, fat)
+
+fat <- 1
+
+SE n < 0 ENTÃO
+    RETORNE FALSO
+FIM SE
+
+PARA i <- 2 ATÉ n FAÇA
+
+    SE fat > MAX / i ENTÃO
+        RETORNE FALSO
+    FIM SE
+
+    fat <- fat * i
+
+FIM PARA
+
+RETORNE VERDADEIRO
+
+
+FIM FUNÇÃO
+
+PSEUDOCÓDIGO DA FUNÇÃO PRINCIPAL
+
+FUNÇÃO processarVetor(n, V, resultado)
+
+somatotal <- 0
+fat <- 0
+
+PARA i <- 0 ATÉ n - 1 FAÇA
+
+    SE V[i] < 0 ENTÃO
+        RETORNE FALSO
+    FIM SE
+
+    SE V[i] MOD 2 = 0 ENTÃO
+
+        fat <- V[i]
+
+    SENÃO
+
+        SE calcularFatorial(V[i], fat) = FALSO ENTÃO
+            RETORNE FALSO
+        FIM SE
+
+    FIM SE
+
+    SE somatotal > MAX - fat ENTÃO
+        RETORNE FALSO
+    FIM SE
+
+    somatotal <- somatotal + fat
+
+FIM PARA
+
+resultado <- somatotal
+
+RETORNE VERDADEIRO
+
+FIM FUNÇÃO
+
+
+
+COMPLEXIDADE
+
+A função calcularFatorial possui complexidade O(m), pois o laço percorre os valores de 2 até n, realizando uma quantidade de operações proporcional ao valor recebido.
+
+Considere m como o maior valor ímpar não negativo presente no vetor.
+
+A função processarVetor percorre os n elementos do vetor. Para cada elemento par, realiza operações de custo constante. Para cada elemento ímpar, pode executar o cálculo do fatorial, que possui custo O(m).
+
+No pior caso, todos os elementos são ímpares.
+
+Assim:
+
+O(n) + O(n) x O(m)
+
+Complexidade final:
+
+O(nm)
+
+
+EXPRESSÃO DE COMPLEXIDADE
+
+Considerando o custo do percurso principal e dos cálculos dos fatoriais:
+
+T(n,m) = n + n(m - 1) + c
+
+Onde c representa as operações constantes de inicialização e retorno.
+
+Simplificando:
+
+T(n,m) = nm + c'
+
+O termo dominante é nm.
+
+Portanto:
+
+T(n,m) = O(nm)
+
+CÁLCULO PARA n = 50.000
+
+No pior caso, todos os elementos são ímpares.
+
+Considerando m como o maior valor ímpar do vetor, o laço do fatorial executa aproximadamente m - 1 iterações para cada elemento.
+
+Quantidade aproximada de iterações:
+
+50.000 x (m - 1)
+
+Considerando uma máquina que executa 10^8 instruções por segundo:
+
+Tempo aproximado:
+
+Tempo = [50.000 x (m - 1)] / 100.000.000
+
+Tempo = 0,0005 x (m - 1) segundos.
+
+
+CONCLUSÃO
+
+A função processarVetor percorre os n elementos do vetor e trata cada elemento de acordo com sua paridade. Os números pares são somados diretamente, enquanto os ímpares exigem o cálculo do fatorial.
+
+Como o cálculo do fatorial depende do valor do elemento, a complexidade no pior caso é O(nm), sendo n a quantidade de elementos do vetor e m o maior valor ímpar considerado.
+
+Se os valores dos elementos forem limitados por n, a complexidade pode ser expressa como O(n²).
