@@ -1,0 +1,83 @@
+FUNÇÃO 3 — Comparação de Matrizes Tridimensionais
+
+PSEUDOCÓDIGO
+
+FUNÇÃO compararMatrizes3D(A, B, n)
+
+    somaA <- 0
+    somaB <- 0
+
+    PARA i <- 0 ATÉ n - 1 FAÇA
+        PARA j <- 0 ATÉ n - 1 FAÇA
+            PARA k <- 0 ATÉ n - 1 FAÇA
+                somaA <- somaA + A[i][j][k]
+            FIM PARA
+        FIM PARA
+    FIM PARA
+
+    PARA i <- 0 ATÉ n - 1 FAÇA
+        PARA j <- 0 ATÉ n - 1 FAÇA
+            PARA k <- 0 ATÉ n - 1 FAÇA
+                somaB <- somaB + B[i][j][k]
+            FIM PARA
+        FIM PARA
+    FIM PARA
+
+    SE somaA >= somaB ENTÃO
+        RETORNE 1
+    SENÃO
+        RETORNE 0
+    FIM SE
+
+FIM FUNÇÃO
+
+
+COMPLEXIDADE
+
+A função percorre completamente duas matrizes tridimensionais de dimensões n x n x n.
+
+Cada matriz possui:
+
+n x n x n = n³ elementos
+
+Para percorrer a matriz A:
+
+O(n³)
+
+Para percorrer a matriz B:
+
+O(n³)
+
+Assim:
+
+T(n) = n³ + n³ + constantes
+
+T(n) = 2n³ + constantes
+
+O termo dominante é n³.
+
+Portanto:
+
+O(n³)
+
+
+CÁLCULO PARA n = 300
+
+Cada matriz possui:
+
+300³ = 27.000.000 elementos
+
+Como duas matrizes são percorridas:
+
+2 x 27.000.000 = 54.000.000 operações dominantes
+
+Considerando um computador que executa 10^8 instruções por segundo:
+
+Tempo = 54.000.000 / 100.000.000
+
+Tempo aproximado = 0,54 segundos
+
+
+CONCLUSÃO
+
+A função percorre completamente as matrizes tridimensionais A e B para calcular suas somas. Como cada matriz possui n³ elementos, a complexidade da função é O(n³).
