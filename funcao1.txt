@@ -1,0 +1,167 @@
+FUNÇÃO 1 — Contagem de Ocorrências Distintas
+
+PSEUDOCÓDIGO
+
+FUNÇÃO contarOcorrencias(V, n, B, k)
+
+    total <- 0
+
+    PARA i <- 0 ATÉ k - 1 FAÇA
+        PARA j <- 0 ATÉ n - 1 FAÇA
+            SE B[i] = V[j] ENTÃO
+                total <- total + 1
+            FIM SE
+        FIM PARA
+    FIM PARA
+
+    RETORNE total
+
+FIM FUNÇÃO
+
+
+COMPLEXIDADE
+
+A função recebe um vetor principal V com n elementos e um vetor B com k elementos a serem buscados.
+
+Para cada um dos k elementos do vetor B, todos os n elementos do vetor V são verificados.
+
+O laço externo executa k vezes:
+
+O(k)
+
+Para cada repetição do laço externo, o laço interno executa n vezes:
+
+O(n)
+
+Assim:
+
+T(n, k) = k x n + constantes
+
+T(n, k) = nk + constantes
+
+O termo dominante é nk.
+
+Portanto:
+
+O(nk)
+
+
+COMPLEXIDADE LINHA POR LINHA
+
+total <- 0
+
+Executa uma única vez:
+
+O(1)
+
+PARA i <- 0 ATÉ k - 1 FAÇA
+
+O laço externo executa k vezes:
+
+O(k)
+
+PARA j <- 0 ATÉ n - 1 FAÇA
+
+Para cada uma das k repetições, o laço interno executa n vezes:
+
+O(nk)
+
+SE B[i] = V[j] ENTÃO
+
+A comparação é realizada n x k vezes:
+
+O(nk)
+
+total <- total + 1
+
+No pior caso, todos os elementos comparados são iguais e o incremento é realizado n x k vezes:
+
+O(nk)
+
+RETORNE total
+
+Executa uma única vez:
+
+O(1)
+
+Somando os custos:
+
+T(n, k) = O(1) + O(k) + O(nk) + O(nk) + O(nk) + O(1)
+
+T(n, k) = O(nk)
+
+
+CÁLCULO PARA n = 50.000 E k = 4.000
+
+A quantidade de comparações dominantes é:
+
+n x k
+
+50.000 x 4.000 = 200.000.000 operações dominantes
+
+Considerando um computador que executa 10^8 instruções por segundo:
+
+Tempo = 200.000.000 / 100.000.000
+
+Tempo aproximado = 2 segundos
+
+
+CONCLUSÃO
+
+A função percorre o vetor de k elementos buscados e, para cada elemento, percorre completamente o vetor principal de n elementos. Como são realizadas n x k comparações, a complexidade da função é O(nk). Para n = 50.000 e k = 4.000, são realizadas 200.000.000 de operações dominantes, resultando em um tempo aproximado de 2 segundos no modelo solicitado.
+
+
+MENU PRINCIPAL
+
+PSEUDOCÓDIGO
+
+INÍCIO
+
+    REPITA
+
+        ESCREVA "1 - Contagem de Ocorrências Distintas"
+        ESCREVA "2 - Análise de Pares em Matriz Triangular"
+        ESCREVA "3 - Comparação de Matrizes Tridimensionais"
+        ESCREVA "4 - Análise de Casos Assimétricos"
+        ESCREVA "5 - Contagem de Elementos em Vetor Ordenado"
+        ESCREVA "0 - Encerrar"
+
+        LEIA opcao
+
+        SE opcao >= 1 E opcao <= 5 ENTÃO
+
+            ESCREVA "1 - Preenchimento manual"
+            ESCREVA "2 - Preenchimento automático"
+            LEIA modoPreenchimento
+
+            ESCOLHA opcao
+
+                CASO 1:
+                    executarFuncao1(modoPreenchimento)
+
+                CASO 2:
+                    executarFuncao2(modoPreenchimento)
+
+                CASO 3:
+                    executarFuncao3(modoPreenchimento)
+
+                CASO 4:
+                    executarFuncao4(modoPreenchimento)
+
+                CASO 5:
+                    executarFuncao5(modoPreenchimento)
+
+            FIM ESCOLHA
+
+        SENÃO SE opcao != 0 ENTÃO
+            ESCREVA "Opção inválida"
+        FIM SE
+
+    ATÉ opcao = 0
+
+FIM
+
+
+OBSERVAÇÃO SOBRE O MENU
+
+O menu permanece em execução até que o usuário escolha a opção 0. Sempre que uma das cinco funções é escolhida, o programa pergunta se o preenchimento dos arranjos será manual ou automático. A opção 1 chama a Função 1, enquanto as demais opções devem ser ligadas às funções desenvolvidas pelos outros integrantes do grupo.
